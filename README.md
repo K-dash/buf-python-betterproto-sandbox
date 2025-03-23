@@ -51,25 +51,6 @@ Buf CLI と python-betterproto プラグインを使用して、.proto ファイ
 makers gen
 ```
 
-> [!WARNING]
-> コード生成時に以下の警告が発生する。これは python-betterproto 内で `google/types/datetime.proto` が 2 回実行されている可能性がある。
->
-> ```bash
-> ~/develop/grpc/buf-betterproto-sandbox/proto ~/develop/grpc/buf-betterproto-sandbox/pet_service
-> Writing __init__.py
-> Writing google/__init__.py
-> Writing google/type/__init__.py
-> Writing __init__.py
-> Writing google/__init__.py
-> Writing google/type/__init__.py
-> Writing pet/__init__.py
-> Writing pet/v1/__init__.py
-> duplicate generated file name "google/type/__init__.py". Generation will continue without error here and drop the second occurrence of this file, but please raise an issue with the maintainer of the plugin.
-> duplicate generated file name "google/__init__.py". Generation will continue without error here and drop the second occurrence of this file, but please raise an issue with the maintainer of the plugin.
-> duplicate generated file name "__init__.py". Generation will continue without error here and drop the second occurrence of this file, but please raise an issue with the maintainer of the plugin.
-> ~/develop/grpc/buf-betterproto-sandbox/pet_service
-> ```
-
 ### 3. gRPC サーバの起動
 
 以下のコマンドで、gRPC サーバを起動します。  

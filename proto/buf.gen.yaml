@@ -3,5 +3,9 @@ clean: true
 plugins:
   - local: protoc-gen-python_betterproto
     out: ../pet_service/src/gen
+    # strategy: all により、全ての入力ディレクトリを単一モジュールとして統合することでプラグインの実行回数を1回に抑える
+    # こうしないと、googleとpetそれぞれの入力ディレクトリ単位でプラグインが実行され、
+    # 結果的にgoogleのdatetime.protoから2回のコード生成が行われてしまう
+    strategy: all
 inputs:
   - directory: .

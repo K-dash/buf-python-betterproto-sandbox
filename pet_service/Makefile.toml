@@ -15,7 +15,7 @@ script = [
 [tasks.gen]
 dependencies = ["setup"]
 description = "generate code from proto files using Buf and betterproto"
-script = ["source .venv/bin/activate", "pushd ../proto", "buf generate", "popd"]
+script = ["source .venv/bin/activate", "pushd ../proto", "buf generate --debug", "popd"]
 
 [tasks.mypy]
 dependencies = ["setup"]
