@@ -18,4 +18,5 @@ jobs:
       - uses: bufbuild/buf-action@v1
         with:
           input: "proto"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           breaking_against: "git://github.com/K-dash/buf-python-betterproto-sandbox.git#branch=main"
