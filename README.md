@@ -92,6 +92,27 @@ GetPetResponse(pet=Pet(pet_type=PetType.DOG, pet_id='1', name='Buddy', created_a
 
 クライアントは、指定した `pet_id` をもとにサーバからダミーのペット情報を受け取ります。
 
+また、`buf curl` コマンドを使ってgRPCサーバーにリクエストを送信することもできます。
+
+```bash
+makers buf-curl
+
+...
+{
+  "pet": {
+    "petType": "PET_TYPE_DOG",
+    "petId": "1",
+    "name": "Buddy",
+    "createdAt": {
+      "year": 2021,
+      "month": 8,
+      "day": 1,
+      "hours": 12
+    }
+  }
+}
+```
+
 ### 5. mypy の実行
 
 mypy を使って proto ファイルから生成されたコード、および gRPC サーバー/クライアントの型チェックを実行します。

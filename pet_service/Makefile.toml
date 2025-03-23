@@ -31,3 +31,11 @@ script = ["uv run python src/server.py"]
 dependencies = ["setup"]
 description = "gRPC client"
 script = ["uv run python src/client.py"]
+
+[tasks.buf-curl]
+description = "run buf and curl"
+script = [
+    "pushd ../proto",
+    "buf curl --http2-prior-knowledge --schema pet/v1/pet.proto --data '{\"pet_id\": \"1\"}' --protocol grpc http://localhost:50051/pet.v1.PetStoreService/GetPet",
+    "popd",
+]
