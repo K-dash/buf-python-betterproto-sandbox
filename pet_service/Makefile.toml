@@ -1,0 +1,33 @@
+[tasks.setup]
+condition = { files_modified = { input = [
+    "./pyproject.toml",
+    "uv.lock",
+], output = [
+    ".venv/timestamp.txt",
+] } }
+script = [
+    "uv venv",
+    "uv sync",
+    "uv pip install -e .",
+    "touch .venv/timestamp.txt",
+]
+
+[tasks.gen]
+dependencies = ["setup"]
+description = "generate code from proto files using Buf and betterproto"
+script = ["source .venv/bin/activate", "pushd ../proto", "buf generate", "popd"]
+
+[tasks.mypy]
+dependencies = ["setup"]
+description = "run mypy"
+script = ["uv run mypy src"]
+
+[tasks.run-server]
+dependencies = ["setup"]
+description = "run the gRPC server"
+script = ["uv run python src/server.py"]
+
+[tasks.client]
+dependencies = ["setup"]
+description = "gRPC client"
+script = ["uv run python src/client.py"]

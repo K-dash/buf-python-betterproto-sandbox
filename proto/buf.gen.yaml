@@ -1,0 +1,7 @@
+version: v2
+clean: true
+plugins:
+  - local: protoc-gen-python_betterproto
+    out: ../pet_service/src/gen
+inputs:
+  - directory: .
