@@ -1,4 +1,4 @@
-# pet_service
+# buf-python-betterproto-sandbox
 
 このプロジェクトは、Buf CLI と python-betterproto プラグインを利用して生成された gRPC スタブコードを使用したサンプルアプリケーションです。
 
