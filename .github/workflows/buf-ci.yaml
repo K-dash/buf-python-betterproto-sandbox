@@ -2,8 +2,8 @@ name: Buf CI
 on:
   # Apply to all pushes on 'main' branch
   push:
-      branches:
-          - main
+    branches:
+      - main
   # Apply to all pull requests
   pull_request:
   delete:
@@ -19,8 +19,3 @@ jobs:
         with:
           input: "proto"
           breaking_against: ".git#branch=main"
-          # Run breaking change, lint, and format checks for Protobuf sources against all branches,
-          # 'proto' # subdirectory, then push to the BSR once validated
-          lint: ${{ github.event_name == 'push' }}
-          format: ${{ github.event_name == 'push' }}
-          breaking: ${{ github.event_name == 'push' }}
