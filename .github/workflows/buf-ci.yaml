@@ -19,4 +19,5 @@ jobs:
         with:
           input: "proto"
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          breaking_against: "git://github.com/K-dash/buf-python-betterproto-sandbox.git#branch=main"
+          breaking_against: ${{ github.event.repository.clone_url }}#format=git,commit=${{ github.event.pull_request.base.sha }},subdir=proto
+
