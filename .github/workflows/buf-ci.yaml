@@ -1,0 +1,23 @@
+name: Buf CI
+on:
+  # Apply to all pushes on 'main' branch
+  push:
+    branches:
+      - main
+  # Apply to all pull requests
+  pull_request:
+  delete:
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  buf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-action@v1
+        with:
+          input: "proto"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          breaking_against: ${{ github.event.repository.clone_url }}#format=git,commit=${{ github.event.pull_request.base.sha }},subdir=proto
+
